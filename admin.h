@@ -8,8 +8,8 @@ using namespace std;
 
 struct SECURITY
 {
-    char username[20];
-    char password[20];
+    string username;
+    string password;
 };
 
 class admin
@@ -17,7 +17,8 @@ class admin
 private:
     SECURITY security;
     fstream file;
-    int ch, flag;
+    int ch;
+    int flag;
     questions q;
 
 public:
@@ -62,10 +63,10 @@ void admin::Register()
     file.seekp(0L, ios::beg);
     cout << "\nEnter new Username:";
     fflush(stdin);
-    gets(security.username);
+    cin >> security.username;
     cout << "\nEnter new Password:";
     fflush(stdin);
-    gets(security.password);
+    cin >> security.password;
     file.write((char *)&security, sizeof(security));
     file.close();
     cout << "\nThank You for registering\n";
@@ -74,17 +75,18 @@ void admin::Register()
 // Login Function Definition
 int admin::login()
 {
-    char uname[20], passwd[20];
+    string uname;
+    string passwd;
     file.open("security.txt", ios::binary | ios::in | ios::out);
     file.seekg(0L, ios::beg);
     cout << "\nENTER USERNAME:";
     fflush(stdin);
-    gets(uname);
+    cin >> uname;
     cout << "\nENTER PASSWORD:";
     fflush(stdin);
-    gets(passwd);
+    cin >> passwd;
     file.read((char *)&security, sizeof(security));
-    if ((strcmp(uname, security.username) == 0) && (strcmp(passwd, security.password) == 0))
+    if ((uname == security.username) && (passwd == security.password))
         flag = 1;
     else
         flag = 0;
