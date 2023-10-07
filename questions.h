@@ -12,7 +12,8 @@ struct QUESTION
     string tans;
     string foans;
     string nans;
-    int ans[5], anss;
+    int ans[5];
+    int anss;
 };
 
 class questions
