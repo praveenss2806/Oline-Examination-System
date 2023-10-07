@@ -31,7 +31,10 @@ void test::start()
 
 void test::takeexam()
 {
-    int ch, p = 0, cnt, c;
+    int ch;
+    int p = 0;
+    int cnt;
+    int c;
     testfile.open("exam.txt", ios::binary | ios::in | ios::out);
     testfile.seekg(0L, ios::beg);
     cout << "\n**********";
