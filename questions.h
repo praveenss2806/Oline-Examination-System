@@ -28,6 +28,7 @@ public:
     void write_new_exam();
     void add_questions();
     void read_exam();
+    void input_q_and_a();
 };
 
 // Constructor Definition
@@ -53,64 +54,55 @@ void questions::ques()
     }
 }
 
+void questions::input_q_and_a()
+{
+    cout << "\n Enter the question:";
+    fflush(stdin);
+    cin >> question.que;
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "\nEnter choice " << i + 1 << " :";
+        fflush(stdin);
+        if (i == 0)
+        {
+            cin >> question.fians;
+        }
+        else if (i == 1)
+        {
+            cin >> question.sans;
+        }
+        else if (i == 2)
+        {
+            cin >> question.tans;
+        }
+        else if (i == 3)
+        {
+            cin >> question.foans;
+        }
+        else if (i == 4)
+        {
+            cin >> question.nans;
+        }
+
+        cout << "\n is it correct answer if yes press 1 else 2:";
+        fflush(stdin);
+        cin >> question.ans[i];
+
+        if (question.ans[i] == 1)
+        {
+            question.anss = question.ans[i];
+        }
+    }
+}
+
 // Function definition for write_new_exam
 void questions::write_new_exam()
 {
     file2.open("exam.txt", ios::binary | ios::in | ios::out);
     file2.seekp(0L, ios::beg);
 
-    cout << "\n enter the question:";
-    fflush(stdin);
-    cin >> question.que;
-    cout << "\n enter the first ans:";
-    fflush(stdin);
-    cin >> question.fians;
-    cout << "\n is it correct answer if yes press 1 else 2:";
-    fflush(stdin);
-    cin >> question.ans[0];
-
-    if (question.ans[0] == 1)
-        question.anss = question.ans[0];
-
-    cout << "\n enter the second answer:";
-    fflush(stdin);
-    cin >> question.sans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[1];
-
-    if (question.ans[1] == 1)
-        question.anss = question.ans[1];
-
-    cout << "\n enter the third answer:";
-    fflush(stdin);
-    cin >> question.tans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[2];
-
-    if (question.ans[2] == 1)
-        question.anss = question.ans[2];
-
-    cout << "\n enter the fourth answer:";
-    fflush(stdin);
-    cin >> question.foans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[3];
-
-    if (question.ans[3] == 1)
-        question.anss = question.ans[3];
-
-    cout << "\n enter last answer:";
-    fflush(stdin);
-    cin >> question.nans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[4];
-
-    if (question.ans[4] == 1)
-        question.anss = question.ans[4];
+    input_q_and_a();
 
     file2.write((char *)&question, sizeof(question));
     file2.close();
@@ -122,58 +114,7 @@ void questions::add_questions()
     file2.open("exam.txt", ios::binary | ios::in | ios::out);
     file2.seekp(0L, ios::end);
 
-    cout << "\n enter the question:";
-    fflush(stdin);
-    cin >> question.que;
-    cout << "\n enter the first ans:";
-    fflush(stdin);
-    cin >> question.fians;
-    cout << "\n is it correct answer if yes press 1 else 2:";
-    fflush(stdin);
-    cin >> question.ans[0];
-
-    if (question.ans[0] == 1)
-        question.anss = question.ans[0];
-
-    cout << "\n enter the second answer:";
-    fflush(stdin);
-    cin >> question.sans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[1];
-
-    if (question.ans[1] == 1)
-        question.anss = question.ans[1];
-
-    cout << "\n enter the third answer:";
-    fflush(stdin);
-    cin >> question.tans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[2];
-
-    if (question.ans[2] == 1)
-        question.anss = question.ans[2];
-
-    cout << "\n enter the fourth answer:";
-    fflush(stdin);
-    cin >> question.foans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[3];
-
-    if (question.ans[3] == 1)
-        question.anss = question.ans[3];
-
-    cout << "\n enter last answer:";
-    fflush(stdin);
-    cin >> question.nans;
-    cout << "\n is it correct answer if yes press 1 else 2?:";
-    fflush(stdin);
-    cin >> question.ans[4];
-
-    if (question.ans[4] == 1)
-        question.anss = question.ans[4];
+    input_q_and_a();
 
     file2.write((char *)&question, sizeof(question));
     file2.close();
