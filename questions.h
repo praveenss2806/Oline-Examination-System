@@ -195,10 +195,10 @@ void questions::read_exam()
         cout << "\n3*)" << question.tans;
         cout << "\n4*)" << question.foans;
         cout << "\n5*)" << question.nans;
-        for (int i = 0; i < 5; i++)
+        for (const auto &i : question.ans)
         {
             ++coun;
-            if (question.ans[i] == 1)
+            if (i == 1)
                 cout << "\nAnswer is:" << coun;
         }
         cout << "\n\n**********";
