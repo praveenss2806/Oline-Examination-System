@@ -31,7 +31,7 @@ void test::start()
 
 void test::takeexam()
 {
-    int ch;
+    int ch1;
     int p = 0;
     int cnt;
     int c;
@@ -59,8 +59,8 @@ void test::takeexam()
             }
         }
         cout << "\n enter your ans no:";
-        cin >> ch;
-        if (ch == c)
+        cin >> ch1;
+        if (ch1 == c)
         {
             cout << "\n Correct answer!Congrats!!!\n";
             ++p;
