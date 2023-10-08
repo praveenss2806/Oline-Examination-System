@@ -50,10 +50,10 @@ void test::takeexam()
         cout << "\n3*)" << question.tans;
         cout << "\n4*)" << question.foans;
         cout << "\n5*)" << question.nans;
-        for (int i = 0; i < 5; i++)
+        for (const auto &i : question.ans)
         {
             ++cnt;
-            if (question.ans[i] == 1)
+            if (i == 1)
             {
                 c = cnt;
             }
